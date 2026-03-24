@@ -1,1088 +1,719 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Revenue Engine™ — 10–20 Qualified Sales Calls. Guaranteed.</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-/* ── RESET & VARS ── */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#06080B;
-  --bg2:#0B0E13;
-  --bg3:#10141C;
-  --surface:#141920;
-  --surface2:#1A2030;
-  --border:rgba(255,255,255,0.07);
-  --border2:rgba(255,255,255,0.12);
-  --mint:#00D68F;
-  --mint-dim:#00A86E;
-  --mint-glow:rgba(0,214,143,0.15);
-  --mint-glow2:rgba(0,214,143,0.06);
-  --gold:#E8B84B;
-  --gold-dim:rgba(232,184,75,0.15);
-  --white:#F0F4FF;
-  --white2:#C8D0E0;
-  --muted:#6B7A99;
-  --muted2:#8892AA;
-  --red:#FF4D6A;
-  --ff-display:'Fraunces',Georgia,serif;
-  --ff-body:'Outfit',sans-serif;
-  --ff-mono:'JetBrains Mono',monospace;
-}
-html{scroll-behavior:smooth}
-body{
-  font-family:var(--ff-body);
-  background:var(--bg);
-  color:var(--white2);
-  line-height:1.6;
-  overflow-x:hidden;
-}
-/* grain overlay */
-body::before{
-  content:'';
-  position:fixed;inset:0;z-index:999;
-  pointer-events:none;
-  opacity:0.025;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  background-size:128px 128px;
-}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Revenue Engine™ — 10–20 Qualified Sales Calls. Guaranteed.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+    
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav class="navbar">
+      <!-- 🔶 Logo (Image) -->
+      <a href="#" class="nav-logo">
+        <img src="/images/main_logo_header.png" style="width: 10rem;" alt="Revenue Engine Logo" />
+      </a>
 
-/* ── TYPOGRAPHY ── */
-h1,h2,h3,h4{font-family:var(--ff-display);font-weight:700;line-height:1.1;color:var(--white)}
-p{font-weight:300;line-height:1.75}
-.mono{font-family:var(--ff-mono)}
-.mint{color:var(--mint)}
-.gold{color:var(--gold)}
-.muted{color:var(--muted)}
-
-/* ── LAYOUT ── */
-.container{max-width:1100px;margin:0 auto;padding:0 32px}
-.container-sm{max-width:740px;margin:0 auto;padding:0 32px}
-section{padding:100px 0}
-
-/* ── ANIMATIONS ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.85)}}
-@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(0,214,143,0.2)}50%{box-shadow:0 0 40px rgba(0,214,143,0.4)}}
-@keyframes borderRotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-
-.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:900;
-  padding:0 32px;height:68px;
-  display:flex;align-items:center;justify-content:space-between;
-  background:rgba(6,8,11,0.85);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);
-}
-.nav-logo{
-  font-family:var(--ff-display);
-  font-size:20px;font-weight:700;
-  color:var(--white);
-  display:flex;align-items:center;gap:8px;
-  text-decoration:none;
-}
-.nav-logo span{color:var(--mint)}
-.nav-links{display:flex;align-items:center;gap:32px}
-.nav-links a{
-  font-size:13px;font-weight:500;
-  color:var(--muted2);text-decoration:none;
-  letter-spacing:0.03em;
-  transition:color 0.2s;
-}
-.nav-links a:hover{color:var(--white)}
-.nav-cta{
-  font-size:13px;font-weight:600;
-  color:var(--bg);background:var(--mint);
-  padding:9px 20px;border-radius:8px;
-  text-decoration:none;
-  transition:all 0.2s;
-  letter-spacing:0.02em;
-}
-.nav-cta:hover{background:#00f0a0;transform:translateY(-1px)}
-
-/* ── HERO ── */
-.hero{
-  min-height:100vh;
-  display:flex;flex-direction:column;
-  justify-content:center;
-  padding:120px 0 80px;
-  position:relative;
-  overflow:hidden;
-}
-.hero-bg{
-  position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 70% 60% at 80% 40%, rgba(0,214,143,0.04) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 50% at 20% 70%, rgba(232,184,75,0.03) 0%, transparent 60%);
-}
-.hero-grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-  background-size:60px 60px;
-  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
-}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--mint);
-  background:var(--mint-glow2);
-  border:1px solid rgba(0,214,143,0.2);
-  padding:6px 14px;border-radius:40px;
-  margin-bottom:28px;
-  width:fit-content;
-  animation:fadeUp 0.6s ease both;
-}
-.hero-badge-dot{
-  width:6px;height:6px;border-radius:50%;
-  background:var(--mint);
-  animation:pulse 2s ease-in-out infinite;
-}
-.hero h1{
-  font-size:clamp(48px,7vw,88px);
-  font-weight:900;
-  letter-spacing:-2px;
-  line-height:1.0;
-  color:var(--white);
-  margin-bottom:12px;
-  animation:fadeUp 0.7s 0.1s ease both;
-}
-.hero h1 em{
-  font-style:italic;
-  font-weight:300;
-  color:var(--mint);
-  display:block;
-}
-.hero-sub{
-  font-size:18px;font-weight:300;
-  color:var(--muted2);
-  max-width:560px;
-  margin-bottom:44px;
-  line-height:1.7;
-  animation:fadeUp 0.7s 0.2s ease both;
-}
-.hero-sub strong{color:var(--white2);font-weight:500}
-.hero-actions{
-  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
-  animation:fadeUp 0.7s 0.3s ease both;
-  margin-bottom:60px;
-}
-.btn-primary{
-  font-size:15px;font-weight:600;
-  color:var(--bg);background:var(--mint);
-  padding:16px 32px;border-radius:10px;
-  text-decoration:none;
-  display:inline-flex;align-items:center;gap:8px;
-  transition:all 0.25s;
-  animation:glow 3s ease-in-out infinite;
-  letter-spacing:0.01em;
-}
-.btn-primary:hover{background:#00f0a0;transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,214,143,0.3)}
-.btn-ghost{
-  font-size:14px;font-weight:500;
-  color:var(--muted2);
-  text-decoration:none;
-  display:inline-flex;align-items:center;gap:6px;
-  transition:color 0.2s;
-  padding:16px 0;
-}
-.btn-ghost:hover{color:var(--white)}
-.hero-trust{
-  font-size:12px;color:var(--muted);
-  display:flex;align-items:center;gap:6px;
-  animation:fadeUp 0.7s 0.35s ease both;
-}
-.hero-trust::before{content:'🔒';font-size:11px}
-.hero-stats{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;
-  background:var(--border);
-  border:1px solid var(--border);
-  border-radius:14px;
-  overflow:hidden;
-  animation:fadeUp 0.7s 0.4s ease both;
-  max-width:600px;
-}
-.hero-stat{
-  background:var(--bg2);
-  padding:24px 28px;
-}
-.hero-stat-num{
-  font-family:var(--ff-display);
-  font-size:38px;font-weight:900;
-  color:var(--white);
-  line-height:1;
-  margin-bottom:4px;
-}
-.hero-stat-num span{color:var(--mint)}
-.hero-stat-label{font-size:12px;color:var(--muted);font-weight:400;letter-spacing:0.03em}
-
-/* TICKER */
-.ticker-wrap{
-  overflow:hidden;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  background:var(--bg2);
-  padding:12px 0;
-  margin:60px 0 0;
-}
-.ticker-inner{
-  display:flex;
-  width:max-content;
-  animation:ticker 28s linear infinite;
-  gap:0;
-}
-.ticker-item{
-  display:flex;align-items:center;gap:10px;
-  padding:0 48px;
-  font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;
-  color:var(--muted);
-  white-space:nowrap;
-  border-right:1px solid var(--border);
-}
-.ticker-item .dot{color:var(--mint);font-size:8px}
-
-/* ── PROBLEM ── */
-.problem{background:var(--bg)}
-.problem-inner{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:80px;align-items:center;
-}
-.section-tag{
-  font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;
-  color:var(--mint);
-  display:flex;align-items:center;gap:8px;
-  margin-bottom:16px;
-}
-.section-tag::before{content:'';width:20px;height:1px;background:var(--mint)}
-.problem h2{font-size:clamp(32px,4vw,50px);letter-spacing:-1px;margin-bottom:24px}
-.problem-desc{font-size:16px;color:var(--muted2);margin-bottom:32px}
-.problem-items{display:flex;flex-direction:column;gap:12px}
-.problem-item{
-  display:flex;align-items:flex-start;gap:12px;
-  padding:16px 20px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:10px;
-  font-size:14px;color:var(--muted2);
-}
-.problem-item .x{
-  color:var(--red);font-size:16px;font-weight:700;
-  flex-shrink:0;margin-top:1px;
-}
-.problem-right{display:flex;flex-direction:column;gap:16px}
-.pain-card{
-  padding:28px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:14px;
-  position:relative;overflow:hidden;
-  transition:border-color 0.3s,transform 0.3s;
-}
-.pain-card:hover{border-color:var(--border2);transform:translateY(-2px)}
-.pain-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--mint),transparent);
-  opacity:0;transition:opacity 0.3s;
-}
-.pain-card:hover::before{opacity:1}
-.pain-icon{font-size:24px;margin-bottom:10px}
-.pain-title{font-size:15px;font-weight:600;color:var(--white);margin-bottom:6px}
-.pain-desc{font-size:13px;color:var(--muted);line-height:1.6}
-
-/* ── HOW IT WORKS ── */
-.how{background:var(--bg2)}
-.how-header{text-align:center;margin-bottom:72px}
-.how-header h2{font-size:clamp(34px,4.5vw,54px);letter-spacing:-1.5px;margin-bottom:16px}
-.how-header p{font-size:16px;color:var(--muted2);max-width:500px;margin:0 auto}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border-radius:16px;overflow:hidden}
-.step{
-  background:var(--bg2);
-  padding:48px 36px;
-  position:relative;
-}
-.step-num{
-  font-family:var(--ff-display);
-  font-size:72px;font-weight:900;
-  color:rgba(0,214,143,0.06);
-  line-height:1;
-  position:absolute;top:24px;right:28px;
-  letter-spacing:-3px;
-}
-.step-icon{
-  width:52px;height:52px;
-  background:var(--mint-glow);
-  border:1px solid rgba(0,214,143,0.2);
-  border-radius:14px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:22px;
-  margin-bottom:24px;
-}
-.step h3{font-size:22px;font-weight:700;color:var(--white);margin-bottom:12px}
-.step p{font-size:14px;color:var(--muted2);line-height:1.7}
-.step-detail{
-  margin-top:20px;
-  display:flex;flex-direction:column;gap:8px;
-}
-.step-detail-item{
-  display:flex;align-items:center;gap:8px;
-  font-size:12px;color:var(--muted);
-  font-family:var(--ff-mono);
-}
-.step-detail-item::before{content:'→';color:var(--mint);font-size:11px}
-
-/* ── RESULTS ── */
-.results{background:var(--bg)}
-.results-header{text-align:center;margin-bottom:64px}
-.results-header h2{font-size:clamp(32px,4vw,52px);letter-spacing:-1.5px;margin-bottom:14px}
-.results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:60px}
-.case-card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:36px;
-  transition:border-color 0.3s,transform 0.25s;
-  position:relative;overflow:hidden;
-}
-.case-card:hover{border-color:var(--mint-dim);transform:translateY(-3px)}
-.case-card::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--mint),transparent);
-  transform:scaleX(0);transform-origin:left;
-  transition:transform 0.4s ease;
-}
-.case-card:hover::after{transform:scaleX(1)}
-.case-tag{
-  font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--mint);background:var(--mint-glow2);
-  border:1px solid rgba(0,214,143,0.15);
-  padding:4px 10px;border-radius:20px;
-  margin-bottom:20px;display:inline-block;
-}
-.case-quote{
-  font-family:var(--ff-display);
-  font-size:18px;font-weight:300;font-style:italic;
-  color:var(--white2);
-  line-height:1.5;
-  margin-bottom:24px;
-}
-.case-author{font-size:13px;color:var(--muted);font-weight:500}
-.case-author strong{color:var(--white2);display:block}
-.case-metrics{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;background:var(--border);
-  border:1px solid var(--border);
-  border-radius:10px;overflow:hidden;
-  margin-top:24px;
-}
-.case-metric{
-  background:var(--bg2);
-  padding:14px 16px;text-align:center;
-}
-.case-metric-num{
-  font-family:var(--ff-display);
-  font-size:22px;font-weight:900;color:var(--mint);
-  line-height:1;margin-bottom:4px;
-}
-.case-metric-label{font-size:10px;color:var(--muted);font-weight:400;letter-spacing:0.05em}
-.results-numbers{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:1px;background:var(--border);
-  border:1px solid var(--border);border-radius:16px;overflow:hidden;
-}
-.result-num-card{
-  background:var(--surface);
-  padding:32px 24px;text-align:center;
-}
-.result-num-card .num{
-  font-family:var(--ff-display);
-  font-size:44px;font-weight:900;
-  color:var(--white);line-height:1;margin-bottom:8px;
-}
-.result-num-card .num span{color:var(--mint)}
-.result-num-card .lbl{font-size:12px;color:var(--muted);letter-spacing:0.04em}
-
-/* ── PRICING ── */
-.pricing{background:var(--bg2)}
-.pricing-header{text-align:center;margin-bottom:56px}
-.pricing-header h2{font-size:clamp(32px,4vw,52px);letter-spacing:-1.5px;margin-bottom:14px}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.price-card{
-  background:var(--bg2);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:36px 32px;
-  position:relative;
-  transition:transform 0.3s,border-color 0.3s;
-}
-.price-card:hover{transform:translateY(-4px)}
-.price-card.popular{
-  border-color:var(--mint-dim);
-  background:var(--surface);
-}
-.popular-badge{
-  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
-  font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--bg);background:var(--mint);
-  padding:4px 14px;border-radius:20px;
-  white-space:nowrap;
-}
-.price-tier{
-  font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:12px;
-}
-.price-amount{
-  display:flex;align-items:baseline;gap:4px;
-  margin-bottom:6px;
-}
-.price-amount .dollar{font-size:20px;color:var(--muted2);font-weight:500;margin-top:8px}
-.price-amount .num{
-  font-family:var(--ff-display);
-  font-size:52px;font-weight:900;color:var(--white);
-  line-height:1;letter-spacing:-2px;
-}
-.price-amount .per{font-size:14px;color:var(--muted);margin-bottom:4px}
-.price-guarantee{
-  font-size:13px;color:var(--mint);font-weight:500;
-  margin-bottom:28px;
-  display:flex;align-items:center;gap:6px;
-}
-.price-guarantee::before{content:'⚡';font-size:12px}
-.price-divider{height:1px;background:var(--border);margin:24px 0}
-.price-features{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
-.price-feature{
-  display:flex;align-items:flex-start;gap:10px;
-  font-size:13px;color:var(--muted2);
-}
-.price-feature .check{color:var(--mint);font-size:14px;flex-shrink:0;margin-top:1px}
-.btn-price{
-  display:block;text-align:center;text-decoration:none;
-  font-size:14px;font-weight:600;
-  padding:14px;border-radius:10px;
-  transition:all 0.25s;letter-spacing:0.02em;
-}
-.btn-price-outline{
-  color:var(--white2);
-  border:1px solid var(--border2);
-}
-.btn-price-outline:hover{background:var(--surface2);border-color:var(--white2)}
-.btn-price-solid{
-  color:var(--bg);background:var(--mint);
-}
-.btn-price-solid:hover{background:#00f0a0;box-shadow:0 8px 30px rgba(0,214,143,0.25)}
-
-/* GUARANTEE BANNER */
-.guarantee-banner{
-  margin-top:40px;
-  padding:28px 36px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:16px;
-  display:flex;align-items:center;gap:24px;
-  text-align:left;
-}
-.guarantee-icon{
-  font-size:40px;flex-shrink:0;
-  animation:float 4s ease-in-out infinite;
-}
-.guarantee-title{
-  font-size:18px;font-weight:700;color:var(--white);margin-bottom:4px;
-  font-family:var(--ff-display);
-}
-.guarantee-desc{font-size:14px;color:var(--muted2)}
-
-/* ── FAQ ── */
-.faq{background:var(--bg)}
-.faq-header{text-align:center;margin-bottom:56px}
-.faq-header h2{font-size:clamp(32px,4vw,52px);letter-spacing:-1.5px;margin-bottom:14px}
-.faq-list{max-width:740px;margin:0 auto;display:flex;flex-direction:column;gap:2px}
-.faq-item{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:12px;
-  overflow:hidden;
-  transition:border-color 0.2s;
-}
-.faq-item.open{border-color:var(--border2)}
-.faq-q{
-  padding:22px 28px;
-  cursor:pointer;
-  display:flex;justify-content:space-between;align-items:center;
-  gap:16px;
-  font-size:15px;font-weight:600;color:var(--white2);
-  user-select:none;
-  transition:color 0.2s;
-}
-.faq-q:hover{color:var(--white)}
-.faq-arrow{
-  width:28px;height:28px;border-radius:50%;
-  background:var(--surface2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:14px;flex-shrink:0;
-  transition:transform 0.3s,background 0.2s;
-  color:var(--muted2);
-}
-.faq-item.open .faq-arrow{transform:rotate(45deg);background:var(--mint-glow);color:var(--mint)}
-.faq-a{
-  max-height:0;overflow:hidden;
-  transition:max-height 0.4s ease,padding 0.3s;
-  padding:0 28px;
-  font-size:14px;color:var(--muted2);line-height:1.8;
-}
-.faq-item.open .faq-a{max-height:200px;padding:0 28px 22px}
-
-/* ── FINAL CTA ── */
-.final-cta{
-  background:var(--bg2);
-  padding:120px 0;
-  text-align:center;
-  position:relative;overflow:hidden;
-}
-.final-cta::before{
-  content:'';position:absolute;
-  top:50%;left:50%;transform:translate(-50%,-50%);
-  width:600px;height:600px;
-  background:radial-gradient(circle,rgba(0,214,143,0.06) 0%,transparent 70%);
-  pointer-events:none;
-}
-.final-cta h2{
-  font-size:clamp(40px,6vw,76px);
-  letter-spacing:-2px;
-  margin-bottom:20px;
-  line-height:1.0;
-}
-.final-cta h2 em{color:var(--mint);font-style:italic;font-weight:300}
-.final-cta p{font-size:17px;color:var(--muted2);margin-bottom:44px;max-width:480px;margin-left:auto;margin-right:auto}
-.final-cta-actions{display:flex;flex-direction:column;align-items:center;gap:14px}
-.cta-sub{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center}
-.cta-sub span{display:flex;align-items:center;gap:5px}
-.scarcity{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
-  color:var(--gold);background:var(--gold-dim);
-  border:1px solid rgba(232,184,75,0.2);
-  padding:7px 16px;border-radius:40px;
-  margin-bottom:32px;
-}
-.scarcity::before{content:'⚠';font-size:12px}
-
-/* ── FOOTER ── */
-footer{
-  background:var(--bg);
-  border-top:1px solid var(--border);
-  padding:40px 0;
-}
-.footer-inner{
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:16px;
-}
-.footer-logo{
-  font-family:var(--ff-display);
-  font-size:18px;font-weight:700;color:var(--white);
-}
-.footer-logo span{color:var(--mint)}
-.footer-copy{font-size:13px;color:var(--muted)}
-.footer-links{display:flex;gap:24px}
-.footer-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color 0.2s}
-.footer-links a:hover{color:var(--white2)}
-
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .problem-inner{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr}
-  .results-grid{grid-template-columns:1fr}
-  .pricing-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}
-  .results-numbers{grid-template-columns:repeat(2,1fr)}
-  .hero-stats{grid-template-columns:1fr 1fr}
-  .nav-links{display:none}
-  section{padding:72px 0}
-}
-@media(max-width:600px){
-  .container,.container-sm{padding:0 20px}
-  .hero{padding:100px 0 60px}
-  .hero-stats{grid-template-columns:1fr}
-  .guarantee-banner{flex-direction:column;text-align:center}
-  nav{padding:0 20px}
-  .case-metrics{grid-template-columns:repeat(3,1fr)}
-  .results-numbers{grid-template-columns:repeat(2,1fr)}
-}
-</style>
-</head>
-<body>
-
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">Revenue<span>Engine</span>™</a>
-  <div class="nav-links">
-    <a href="#how">How It Works</a>
-    <a href="#results">Results</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#faq">FAQ</a>
-  </div>
-  <a href="https://calendly.com/leodigitalz-dm/30min" class="nav-cta">Book Strategy Call →</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="container">
-    <div class="hero-badge">
-      <div class="hero-badge-dot"></div>
-      Done-For-You Lead Generation
-    </div>
-    <h1>
-      10–20 Qualified Sales<br>Calls Every Month.
-      <em>Guaranteed.</em>
-    </h1>
-    <p class="hero-sub">
-      We install a fully automated outbound system for your business — <strong>AI-personalized outreach</strong> to 500–1,000 dream clients per week. No ads. No hiring. Just calls on your calendar.
-    </p>
-    <div class="hero-actions">
-      <a href="#cta" class="btn-primary">Book My Free Strategy Call →</a>
-      <a href="#how" class="btn-ghost">See how it works ↓</a>
-    </div>
-    <div class="hero-trust">No contracts. Cancel anytime. Results guaranteed in 30 days or full refund.</div>
-
-    <div class="hero-stats" style="margin-top:48px">
-      <div class="hero-stat">
-        <div class="hero-stat-num">14<span>.2</span></div>
-        <div class="hero-stat-label">Avg. calls booked / month</div>
+      <!-- Links -->
+      <div class="nav-links">
+        <a href="#how">How It Works</a>
+        <a href="#results">Results</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">3<span>.1x</span></div>
-        <div class="hero-stat-label">Average client ROI</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">89<span>%</span></div>
-        <div class="hero-stat-label">Client retention rate</div>
-      </div>
-    </div>
-  </div>
 
-  <div class="ticker-wrap">
-    <div class="ticker-inner">
-      <div class="ticker-item"><span class="dot">●</span> Law Firms</div>
-      <div class="ticker-item"><span class="dot">●</span> Med Spas</div>
-      <div class="ticker-item"><span class="dot">●</span> SaaS Companies</div>
-      <div class="ticker-item"><span class="dot">●</span> Real Estate Agencies</div>
-      <div class="ticker-item"><span class="dot">●</span> Financial Advisors</div>
-      <div class="ticker-item"><span class="dot">●</span> Business Coaches</div>
-      <div class="ticker-item"><span class="dot">●</span> Staffing Firms</div>
-      <div class="ticker-item"><span class="dot">●</span> Marketing Agencies</div>
-      <div class="ticker-item"><span class="dot">●</span> Consulting Firms</div>
-      <div class="ticker-item"><span class="dot">●</span> IT Services</div>
-      <!-- duplicate for seamless loop -->
-      <div class="ticker-item"><span class="dot">●</span> Law Firms</div>
-      <div class="ticker-item"><span class="dot">●</span> Med Spas</div>
-      <div class="ticker-item"><span class="dot">●</span> SaaS Companies</div>
-      <div class="ticker-item"><span class="dot">●</span> Real Estate Agencies</div>
-      <div class="ticker-item"><span class="dot">●</span> Financial Advisors</div>
-      <div class="ticker-item"><span class="dot">●</span> Business Coaches</div>
-      <div class="ticker-item"><span class="dot">●</span> Staffing Firms</div>
-      <div class="ticker-item"><span class="dot">●</span> Marketing Agencies</div>
-      <div class="ticker-item"><span class="dot">●</span> Consulting Firms</div>
-      <div class="ticker-item"><span class="dot">●</span> IT Services</div>
-    </div>
-  </div>
-</section>
+      <!-- CTA -->
+      <a href="https://calendly.com/leodigitalz-dm/30min" class="nav-cta">
+        Book Strategy Call →
+      </a>
+    </nav>
 
-<!-- PROBLEM -->
-<section class="problem">
-  <div class="container">
-    <div class="problem-inner">
-      <div class="reveal">
-        <div class="section-tag">The Problem</div>
-        <h2>Most Businesses Are Leaving $10K+/Month on the Table</h2>
-        <p class="problem-desc">You're exceptional at what you do. But generating a consistent pipeline is a completely different skill set — and most businesses never crack it.</p>
-        <div class="problem-items">
-          <div class="problem-item"><span class="x">✗</span> Running Facebook or Google ads — expensive and unpredictable</div>
-          <div class="problem-item"><span class="x">✗</span> Waiting on referrals — slow, unreliable, out of your control</div>
-          <div class="problem-item"><span class="x">✗</span> Hiring a sales rep — costly, takes months to ramp up</div>
-          <div class="problem-item"><span class="x">✗</span> Posting on social media — inconsistent results, huge time sink</div>
-          <div class="problem-item"><span class="x">✗</span> Cold calling yourself — exhausting, soul-crushing, low ROI</div>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-grid"></div>
+      <div class="container">
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          Done-For-You Lead Generation
+        </div>
+        <h1>
+          10–20 Qualified Sales<br />Calls Every Month.
+          <em>Guaranteed.</em>
+        </h1>
+        <p class="hero-sub">
+          We install a fully automated outbound system for your business —
+          <strong>AI-personalized outreach</strong> to 500–1,000 dream clients
+          per week. No ads. No hiring. Just calls on your calendar.
+        </p>
+        <div class="hero-actions">
+          <a
+            href="https://calendly.com/leodigitalz-dm/30min"
+            class="btn-primary"
+            >Book My Free Strategy Call →</a
+          >
+          <a href="#how" class="btn-ghost">See how it works ↓</a>
+        </div>
+        <div class="hero-trust">
+          No contracts. Cancel anytime. Results guaranteed in 30 days or full
+          refund.
+        </div>
+
+        <div class="hero-stats" style="margin-top: 48px">
+          <div class="hero-stat">
+            <div class="hero-stat-num">14<span>.2</span></div>
+            <div class="hero-stat-label">Avg. calls booked / month</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">3<span>.1x</span></div>
+            <div class="hero-stat-label">Average client ROI</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">89<span>%</span></div>
+            <div class="hero-stat-label">Client retention rate</div>
+          </div>
         </div>
       </div>
-      <div class="problem-right reveal">
-        <div class="pain-card">
-          <div class="pain-icon">📉</div>
-          <div class="pain-title">The Real Problem Isn't Your Offer</div>
-          <div class="pain-desc">Your service is great. The issue is that no one is reaching the right people, with the right message, at the right scale — consistently.</div>
-        </div>
-        <div class="pain-card">
-          <div class="pain-icon">⚡</div>
-          <div class="pain-title">What You Actually Need</div>
-          <div class="pain-desc">A predictable, automated system that reaches hundreds of your ideal clients every week — and converts them into booked appointments on your calendar.</div>
-        </div>
-        <div class="pain-card">
-          <div class="pain-icon">🎯</div>
-          <div class="pain-title">That's Exactly What We Built</div>
-          <div class="pain-desc">The Revenue Engine™ is a done-for-you outbound machine. We build it, run it, and guarantee results — so you focus entirely on closing.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- HOW IT WORKS -->
-<section class="how" id="how">
-  <div class="container">
-    <div class="how-header reveal">
-      <div class="section-tag" style="justify-content:center">How It Works</div>
-      <h2>From Zero to Booked Calls<br>in Under Two Weeks</h2>
-      <p>We handle every step. You show up to the calls and close deals.</p>
-    </div>
-    <div class="steps reveal">
-      <div class="step">
-        <div class="step-num">01</div>
-        <div class="step-icon">🗂️</div>
-        <h3>We Build Your Hit List</h3>
-        <p>We research and compile a laser-targeted list of your exact dream clients — filtered by industry, company size, title, revenue, and location.</p>
-        <div class="step-detail">
-          <div class="step-detail-item">AI-verified contact data</div>
-          <div class="step-detail-item">500–1,000 new prospects/week</div>
-          <div class="step-detail-item">Zero junk leads</div>
+      <div class="ticker-wrap">
+        <div class="ticker-inner">
+          <div class="ticker-item"><span class="dot">●</span> Law Firms</div>
+          <div class="ticker-item"><span class="dot">●</span> Med Spas</div>
+          <div class="ticker-item">
+            <span class="dot">●</span> SaaS Companies
+          </div>
+          <div class="ticker-item">
+            <span class="dot">●</span> Real Estate Agencies
+          </div>
+          <div class="ticker-item">
+            <span class="dot">●</span> Financial Advisors
+          </div>
+          <div class="ticker-item">
+            <span class="dot">●</span> Business Coaches
+          </div>
+          <div class="ticker-item">
+            <span class="dot">●</span> Staffing Firms
+          </div>
+          <div class="ticker-item">
+            <span class="dot">●</span> Marketing Agencies
+          </div>
+          <div class="ticker-item">
+            <span class="dot">●</span> Consulting Firms
+          </div>
+          <div class="ticker-item"><span class="dot">●</span> IT Services</div>
+          <!-- duplicate for seamless loop -->
+          <div class="ticker-item"><span class="dot">●</span> Law Firms</div>
+          <div class="ticker-item"><span class="dot">●</span> Med Spas</div>
+          <div class="ticker-item">
+            <span class="dot">●</span> SaaS Companies
+          </div>
+          <div class="ticker-item">
+            <span class="dot">●</span> Real Estate Agencies
+          </div>
+          <div class="ticker-item">
+            <span class="dot">●</span> Financial Advisors
+          </div>
+          <div class="ticker-item">
+            <span class="dot">●</span> Business Coaches
+          </div>
+          <div class="ticker-item">
+            <span class="dot">●</span> Staffing Firms
+          </div>
+          <div class="ticker-item">
+            <span class="dot">●</span> Marketing Agencies
+          </div>
+          <div class="ticker-item">
+            <span class="dot">●</span> Consulting Firms
+          </div>
+          <div class="ticker-item"><span class="dot">●</span> IT Services</div>
         </div>
       </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <div class="step-icon">✍️</div>
-        <h3>We Write & Launch Outreach</h3>
-        <p>Our copywriters craft hyper-personalized email and LinkedIn sequences. AI makes every message feel 1-on-1. We manage replies and handle objections.</p>
-        <div class="step-detail">
-          <div class="step-detail-item">AI-personalized at scale</div>
-          <div class="step-detail-item">Email + LinkedIn multi-touch</div>
-          <div class="step-detail-item">A/B tested continuously</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <div class="step-icon">📅</div>
-        <h3>Calls Land on Your Calendar</h3>
-        <p>Qualified prospects book directly into your calendar. You get daily briefings with full context on each lead. You show up, pitch, and close.</p>
-        <div class="step-detail">
-          <div class="step-detail-item">Direct calendar booking</div>
-          <div class="step-detail-item">Pre-call lead briefings</div>
-          <div class="step-detail-item">Guaranteed call volume</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- RESULTS -->
-<section class="results" id="results">
-  <div class="container">
-    <div class="results-header reveal">
-      <div class="section-tag" style="justify-content:center">Real Results</div>
-      <h2>Real Businesses. Real Revenue.</h2>
-      <p style="color:var(--muted2)">What happens when you install a system that never stops working for you.</p>
-    </div>
-
-    <div class="results-grid reveal">
-      <div class="case-card">
-        <div class="case-tag">Law Firm — Austin, TX</div>
-        <div class="case-quote">"We'd relied on referrals for 3 years. Within the first month, we had 14 qualified calls booked. Closed 3 of them — $21,000 in new revenue. The system just works."</div>
-        <div class="case-author"><strong>Michael R., Managing Partner</strong>Riverside Legal Group</div>
-        <div class="case-metrics">
-          <div class="case-metric"><div class="case-metric-num">14</div><div class="case-metric-label">Calls booked</div></div>
-          <div class="case-metric"><div class="case-metric-num">3</div><div class="case-metric-label">New clients</div></div>
-          <div class="case-metric"><div class="case-metric-num">$21K</div><div class="case-metric-label">New revenue</div></div>
+    <!-- PROBLEM -->
+    <section class="problem">
+      <div class="container">
+        <div class="problem-inner">
+          <div class="reveal">
+            <div class="section-tag">The Problem</div>
+            <h2>Most Businesses Are Leaving $10K+/Month on the Table</h2>
+            <p class="problem-desc">
+              You're exceptional at what you do. But generating a consistent
+              pipeline is a completely different skill set — and most businesses
+              never crack it.
+            </p>
+            <div class="problem-items">
+              <div class="problem-item">
+                <span class="x">✗</span> Running Facebook or Google ads —
+                expensive and unpredictable
+              </div>
+              <div class="problem-item">
+                <span class="x">✗</span> Waiting on referrals — slow,
+                unreliable, out of your control
+              </div>
+              <div class="problem-item">
+                <span class="x">✗</span> Hiring a sales rep — costly, takes
+                months to ramp up
+              </div>
+              <div class="problem-item">
+                <span class="x">✗</span> Posting on social media — inconsistent
+                results, huge time sink
+              </div>
+              <div class="problem-item">
+                <span class="x">✗</span> Cold calling yourself — exhausting,
+                soul-crushing, low ROI
+              </div>
+            </div>
+          </div>
+          <div class="problem-right reveal">
+            <div class="pain-card">
+              <div class="pain-icon">📉</div>
+              <div class="pain-title">The Real Problem Isn't Your Offer</div>
+              <div class="pain-desc">
+                Your service is great. The issue is that no one is reaching the
+                right people, with the right message, at the right scale —
+                consistently.
+              </div>
+            </div>
+            <div class="pain-card">
+              <div class="pain-icon">⚡</div>
+              <div class="pain-title">What You Actually Need</div>
+              <div class="pain-desc">
+                A predictable, automated system that reaches hundreds of your
+                ideal clients every week — and converts them into booked
+                appointments on your calendar.
+              </div>
+            </div>
+            <div class="pain-card">
+              <div class="pain-icon">🎯</div>
+              <div class="pain-title">That's Exactly What We Built</div>
+              <div class="pain-desc">
+                The Revenue Engine™ is a done-for-you outbound machine. We build
+                it, run it, and guarantee results — so you focus entirely on
+                closing.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="case-card">
-        <div class="case-tag">Med Spa — Miami, FL</div>
-        <div class="case-quote">"I was skeptical about yet another agency. The 30-day guarantee is what got me to try it. We hit 18 calls in 26 days. Now we're on month 4 and haven't looked back."</div>
-        <div class="case-author"><strong>Jessica T., Owner</strong>Lumina Aesthetics</div>
-        <div class="case-metrics">
-          <div class="case-metric"><div class="case-metric-num">18</div><div class="case-metric-label">Calls booked</div></div>
-          <div class="case-metric"><div class="case-metric-num">26</div><div class="case-metric-label">Days to results</div></div>
-          <div class="case-metric"><div class="case-metric-num">4mo+</div><div class="case-metric-label">Client tenure</div></div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how" id="how">
+      <div class="container">
+        <div class="how-header reveal">
+          <div class="section-tag" style="justify-content: center">
+            How It Works
+          </div>
+          <h2>From Zero to Booked Calls<br />in Under Two Weeks</h2>
+          <p>We handle every step. You show up to the calls and close deals.</p>
+        </div>
+        <div class="steps reveal">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-icon">🗂️</div>
+            <h3>We Build Your Hit List</h3>
+            <p>
+              We research and compile a laser-targeted list of your exact dream
+              clients — filtered by industry, company size, title, revenue, and
+              location.
+            </p>
+            <div class="step-detail">
+              <div class="step-detail-item">AI-verified contact data</div>
+              <div class="step-detail-item">500–1,000 new prospects/week</div>
+              <div class="step-detail-item">Zero junk leads</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-icon">✍️</div>
+            <h3>We Write & Launch Outreach</h3>
+            <p>
+              Our copywriters craft hyper-personalized email and LinkedIn
+              sequences. AI makes every message feel 1-on-1. We manage replies
+              and handle objections.
+            </p>
+            <div class="step-detail">
+              <div class="step-detail-item">AI-personalized at scale</div>
+              <div class="step-detail-item">Email + LinkedIn multi-touch</div>
+              <div class="step-detail-item">A/B tested continuously</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-icon">📅</div>
+            <h3>Calls Land on Your Calendar</h3>
+            <p>
+              Qualified prospects book directly into your calendar. You get
+              daily briefings with full context on each lead. You show up,
+              pitch, and close.
+            </p>
+            <div class="step-detail">
+              <div class="step-detail-item">Direct calendar booking</div>
+              <div class="step-detail-item">Pre-call lead briefings</div>
+              <div class="step-detail-item">Guaranteed call volume</div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="results-numbers reveal">
-      <div class="result-num-card">
-        <div class="num"><span>14</span>.2</div>
-        <div class="lbl">Avg. calls / month</div>
-      </div>
-      <div class="result-num-card">
-        <div class="num">3<span>.1x</span></div>
-        <div class="lbl">Average ROI</div>
-      </div>
-      <div class="result-num-card">
-        <div class="num">89<span>%</span></div>
-        <div class="lbl">Retention rate</div>
-      </div>
-      <div class="result-num-card">
-        <div class="num">8<span>.4mo</span></div>
-        <div class="lbl">Avg. client tenure</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-  <div class="container">
-    <div class="pricing-header reveal">
-      <div class="section-tag" style="justify-content:center">Pricing</div>
-      <h2>Simple, Transparent Pricing.<br>Guaranteed Results.</h2>
-      <p style="color:var(--muted2)">Every plan includes our 30-day money-back guarantee. You don't pay if we don't deliver.</p>
-    </div>
-
-    <div class="pricing-grid reveal">
-      <!-- STARTER -->
-      <div class="price-card">
-        <div class="price-tier">Starter</div>
-        <div class="price-amount">
-          <span class="dollar">$</span>
-          <span class="num">2,500</span>
-          <span class="per">/mo</span>
+    <!-- RESULTS -->
+    <section class="results" id="results">
+      <div class="container">
+        <div class="results-header reveal">
+          <div class="section-tag" style="justify-content: center">
+            Real Results
+          </div>
+          <h2>Real Businesses. Real Revenue.</h2>
+          <p style="color: var(--muted2)">
+            What happens when you install a system that never stops working for
+            you.
+          </p>
         </div>
-        <div class="price-guarantee">5+ qualified calls guaranteed</div>
-        <div class="price-divider"></div>
-        <div class="price-features">
-          <div class="price-feature"><span class="check">✓</span> Up to 500 prospects/week</div>
-          <div class="price-feature"><span class="check">✓</span> Custom prospect list</div>
-          <div class="price-feature"><span class="check">✓</span> AI-personalized email sequences</div>
-          <div class="price-feature"><span class="check">✓</span> CRM setup & lead tracking</div>
-          <div class="price-feature"><span class="check">✓</span> Weekly performance reports</div>
-          <div class="price-feature"><span class="check">✓</span> 1× strategy call/month</div>
-          <div class="price-feature"><span class="check">✓</span> 30-day money-back guarantee</div>
-        </div>
-        <a href="#cta" class="btn-price btn-price-outline">Get Started →</a>
-      </div>
 
-      <!-- GROWTH (popular) -->
-      <div class="price-card popular">
-        <div class="popular-badge">Most Popular</div>
-        <div class="price-tier">Growth</div>
-        <div class="price-amount">
-          <span class="dollar">$</span>
-          <span class="num">4,500</span>
-          <span class="per">/mo</span>
+        <div class="results-grid reveal">
+          <div class="case-card">
+            <div class="case-tag">Law Firm — Austin, TX</div>
+            <div class="case-quote">
+              "We'd relied on referrals for 3 years. Within the first month, we
+              had 14 qualified calls booked. Closed 3 of them — $21,000 in new
+              revenue. The system just works."
+            </div>
+            <div class="case-author">
+              <strong>Michael R., Managing Partner</strong>Riverside Legal Group
+            </div>
+            <div class="case-metrics">
+              <div class="case-metric">
+                <div class="case-metric-num">14</div>
+                <div class="case-metric-label">Calls booked</div>
+              </div>
+              <div class="case-metric">
+                <div class="case-metric-num">3</div>
+                <div class="case-metric-label">New clients</div>
+              </div>
+              <div class="case-metric">
+                <div class="case-metric-num">$21K</div>
+                <div class="case-metric-label">New revenue</div>
+              </div>
+            </div>
+          </div>
+          <div class="case-card">
+            <div class="case-tag">Med Spa — Miami, FL</div>
+            <div class="case-quote">
+              "I was skeptical about yet another agency. The 30-day guarantee is
+              what got me to try it. We hit 18 calls in 26 days. Now we're on
+              month 4 and haven't looked back."
+            </div>
+            <div class="case-author">
+              <strong>Jessica T., Owner</strong>Lumina Aesthetics
+            </div>
+            <div class="case-metrics">
+              <div class="case-metric">
+                <div class="case-metric-num">18</div>
+                <div class="case-metric-label">Calls booked</div>
+              </div>
+              <div class="case-metric">
+                <div class="case-metric-num">26</div>
+                <div class="case-metric-label">Days to results</div>
+              </div>
+              <div class="case-metric">
+                <div class="case-metric-num">4mo+</div>
+                <div class="case-metric-label">Client tenure</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="price-guarantee">12+ qualified calls guaranteed</div>
-        <div class="price-divider"></div>
-        <div class="price-features">
-          <div class="price-feature"><span class="check">✓</span> Up to 1,000 prospects/week</div>
-          <div class="price-feature"><span class="check">✓</span> Custom prospect list</div>
-          <div class="price-feature"><span class="check">✓</span> Email + LinkedIn multi-touch</div>
-          <div class="price-feature"><span class="check">✓</span> A/B split testing included</div>
-          <div class="price-feature"><span class="check">✓</span> CRM + pipeline dashboard</div>
-          <div class="price-feature"><span class="check">✓</span> 2× strategy calls/month</div>
-          <div class="price-feature"><span class="check">✓</span> Dedicated account manager</div>
-          <div class="price-feature"><span class="check">✓</span> 30-day money-back guarantee</div>
-        </div>
-        <a href="#cta" class="btn-price btn-price-solid">Get Started →</a>
-      </div>
 
-      <!-- SCALE -->
-      <div class="price-card">
-        <div class="price-tier">Scale</div>
-        <div class="price-amount">
-          <span class="dollar">$</span>
-          <span class="num">7,500</span>
-          <span class="per">/mo</span>
+        <div class="results-numbers reveal">
+          <div class="result-num-card">
+            <div class="num"><span>14</span>.2</div>
+            <div class="lbl">Avg. calls / month</div>
+          </div>
+          <div class="result-num-card">
+            <div class="num">3<span>.1x</span></div>
+            <div class="lbl">Average ROI</div>
+          </div>
+          <div class="result-num-card">
+            <div class="num">89<span>%</span></div>
+            <div class="lbl">Retention rate</div>
+          </div>
+          <div class="result-num-card">
+            <div class="num">8<span>.4mo</span></div>
+            <div class="lbl">Avg. client tenure</div>
+          </div>
         </div>
-        <div class="price-guarantee">20+ qualified calls guaranteed</div>
-        <div class="price-divider"></div>
-        <div class="price-features">
-          <div class="price-feature"><span class="check">✓</span> Unlimited prospects/week</div>
-          <div class="price-feature"><span class="check">✓</span> Everything in Growth</div>
-          <div class="price-feature"><span class="check">✓</span> Dedicated SDR support</div>
-          <div class="price-feature"><span class="check">✓</span> Priority onboarding (48hr)</div>
-          <div class="price-feature"><span class="check">✓</span> Custom reporting dashboard</div>
-          <div class="price-feature"><span class="check">✓</span> Weekly strategy sessions</div>
-          <div class="price-feature"><span class="check">✓</span> 30-day money-back guarantee</div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+      <div class="container">
+        <div class="pricing-header reveal">
+          <div class="section-tag" style="justify-content: center">Pricing</div>
+          <h2>Simple, Transparent Pricing.<br />Guaranteed Results.</h2>
+          <p style="color: var(--muted2)">
+            Every plan includes our 30-day money-back guarantee. You don't pay
+            if we don't deliver.
+          </p>
         </div>
-        <a href="#cta" class="btn-price btn-price-outline">Get Started →</a>
-      </div>
-    </div>
 
-    <div class="guarantee-banner reveal" style="margin-top:32px">
-      <div class="guarantee-icon">🛡️</div>
-      <div>
-        <div class="guarantee-title">The 30-Day Iron Guarantee</div>
-        <div class="guarantee-desc">If we don't hit your guaranteed number of booked calls in the first 30 days, you receive a complete refund — no questions, no fine print, no drama. We've built this business on the confidence that our system works. If it doesn't for you, you pay nothing.</div>
-      </div>
-    </div>
-  </div>
-</section>
+        <div class="pricing-grid reveal">
+          <!-- STARTER -->
+          <div class="price-card">
+            <div class="price-tier">Starter</div>
+            <div class="price-amount">
+              <span class="dollar">$</span>
+              <span class="num">2,500</span>
+              <span class="per">/mo</span>
+            </div>
+            <div class="price-guarantee">5+ qualified calls guaranteed</div>
+            <div class="price-divider"></div>
+            <div class="price-features">
+              <div class="price-feature">
+                <span class="check">✓</span> Up to 500 prospects/week
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> Custom prospect list
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> AI-personalized email sequences
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> CRM setup & lead tracking
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> Weekly performance reports
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> 1× strategy call/month
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> 30-day money-back guarantee
+              </div>
+            </div>
+            <a href="#cta" class="btn-price btn-price-outline">Get Started →</a>
+          </div>
 
-<!-- FAQ -->
-<section class="faq" id="faq">
-  <div class="container">
-    <div class="faq-header reveal">
-      <div class="section-tag" style="justify-content:center">FAQ</div>
-      <h2>Frequently Asked Questions</h2>
-    </div>
+          <!-- GROWTH (popular) -->
+          <div class="price-card popular">
+            <div class="popular-badge">Most Popular</div>
+            <div class="price-tier">Growth</div>
+            <div class="price-amount">
+              <span class="dollar">$</span>
+              <span class="num">4,500</span>
+              <span class="per">/mo</span>
+            </div>
+            <div class="price-guarantee">12+ qualified calls guaranteed</div>
+            <div class="price-divider"></div>
+            <div class="price-features">
+              <div class="price-feature">
+                <span class="check">✓</span> Up to 1,000 prospects/week
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> Custom prospect list
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> Email + LinkedIn multi-touch
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> A/B split testing included
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> CRM + pipeline dashboard
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> 2× strategy calls/month
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> Dedicated account manager
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> 30-day money-back guarantee
+              </div>
+            </div>
+            <a href="#cta" class="btn-price btn-price-solid">Get Started →</a>
+          </div>
 
-    <div class="faq-list reveal">
-      <div class="faq-item open">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          Do I need to do any of the outreach myself?
-          <span class="faq-arrow">+</span>
+          <!-- SCALE -->
+          <div class="price-card">
+            <div class="price-tier">Scale</div>
+            <div class="price-amount">
+              <span class="dollar">$</span>
+              <span class="num">7,500</span>
+              <span class="per">/mo</span>
+            </div>
+            <div class="price-guarantee">20+ qualified calls guaranteed</div>
+            <div class="price-divider"></div>
+            <div class="price-features">
+              <div class="price-feature">
+                <span class="check">✓</span> Unlimited prospects/week
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> Everything in Growth
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> Dedicated SDR support
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> Priority onboarding (48hr)
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> Custom reporting dashboard
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> Weekly strategy sessions
+              </div>
+              <div class="price-feature">
+                <span class="check">✓</span> 30-day money-back guarantee
+              </div>
+            </div>
+            <a href="#cta" class="btn-price btn-price-outline">Get Started →</a>
+          </div>
         </div>
-        <div class="faq-a">Absolutely not. We handle 100% of the outreach — prospect research, message writing, sending, follow-ups, and reply management. Your only job is to show up to the calls we book and close deals.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          How quickly will I see results?
-          <span class="faq-arrow">+</span>
-        </div>
-        <div class="faq-a">Most clients see their first calls within 7–10 days of launch. The system hits full speed by week 3 as we optimize messaging based on early data. We've had clients book their first call within 48 hours of going live.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          What industries do you work with?
-          <span class="faq-arrow">+</span>
-        </div>
-        <div class="faq-a">We specialize in B2B service businesses: law firms, med spas, SaaS companies, real estate agencies, financial advisors, business coaches, staffing firms, IT services, and marketing agencies. Book a free strategy call and we'll tell you honestly if your niche is a fit.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          What if I already have an SDR team?
-          <span class="faq-arrow">+</span>
-        </div>
-        <div class="faq-a">Great — we complement your team perfectly. Our system fills their pipeline with warm, pre-qualified leads so your SDRs spend their time closing, not prospecting. Most clients with existing teams see a 40–60% increase in team productivity.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          Is there a long-term contract?
-          <span class="faq-arrow">+</span>
-        </div>
-        <div class="faq-a">No contracts. We operate on a month-to-month basis. We earn your business every single month by delivering results. The average client stays with us for 8.4 months — not because they're locked in, but because the system keeps working.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          What does the guarantee actually cover?
-          <span class="faq-arrow">+</span>
-        </div>
-        <div class="faq-a">If we don't hit your plan's guaranteed number of booked calls in your first 30 days, you receive a full refund — no questions asked. "Booked calls" means qualified prospects who show up to scheduled calls with you, not just calendar holds.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          How many clients do you take on?
-          <span class="faq-arrow">+</span>
-        </div>
-        <div class="faq-a">We limit new onboardings to 5 clients per month. This isn't manufactured scarcity — it's how we protect the quality of results for every client. Each new client gets a dedicated team and personalized strategy, which requires real bandwidth.</div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- FINAL CTA -->
-<section class="final-cta" id="cta">
-  <div class="container-sm">
-    <div class="scarcity">⚠ Only 2 onboarding spots left this month</div>
-    <h2>Stop Chasing Clients.<br>Start <em>Choosing</em> Them.</h2>
-    <p>Your next 10–20 qualified sales calls are 30 days away. Book a free 15-minute strategy call — we'll map out your exact system and tell you honestly if it's a fit.</p>
-    <div class="final-cta-actions">
-      <a href="https://calendly.com/leodigitalz-dm/30min" class="btn-primary" style="font-size:16px;padding:18px 40px">Book My Free Strategy Call →</a>
-      <div class="cta-sub">
-        <span>⏱ 15 minutes</span>
-        <span>🔒 No pressure</span>
-        <span>✓ No contracts</span>
-        <span>⚡ Results guaranteed</span>
+        <div class="guarantee-banner reveal" style="margin-top: 32px">
+          <div class="guarantee-icon">🛡️</div>
+          <div>
+            <div class="guarantee-title">The 30-Day Iron Guarantee</div>
+            <div class="guarantee-desc">
+              If we don't hit your guaranteed number of booked calls in the
+              first 30 days, you receive a complete refund — no questions, no
+              fine print, no drama. We've built this business on the confidence
+              that our system works. If it doesn't for you, you pay nothing.
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-logo">Revenue<span>Engine</span>™</div>
-      <div class="footer-copy">© 2025 RevenueEngine. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Contact</a>
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="faq-header reveal">
+          <div class="section-tag" style="justify-content: center">FAQ</div>
+          <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-list reveal">
+          <div class="faq-item open">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              Do I need to do any of the outreach myself?
+              <span class="faq-arrow">+</span>
+            </div>
+            <div class="faq-a">
+              Absolutely not. We handle 100% of the outreach — prospect
+              research, message writing, sending, follow-ups, and reply
+              management. Your only job is to show up to the calls we book and
+              close deals.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              How quickly will I see results?
+              <span class="faq-arrow">+</span>
+            </div>
+            <div class="faq-a">
+              Most clients see their first calls within 7–10 days of launch. The
+              system hits full speed by week 3 as we optimize messaging based on
+              early data. We've had clients book their first call within 48
+              hours of going live.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              What industries do you work with?
+              <span class="faq-arrow">+</span>
+            </div>
+            <div class="faq-a">
+              We specialize in B2B service businesses: law firms, med spas, SaaS
+              companies, real estate agencies, financial advisors, business
+              coaches, staffing firms, IT services, and marketing agencies. Book
+              a free strategy call and we'll tell you honestly if your niche is
+              a fit.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              What if I already have an SDR team?
+              <span class="faq-arrow">+</span>
+            </div>
+            <div class="faq-a">
+              Great — we complement your team perfectly. Our system fills their
+              pipeline with warm, pre-qualified leads so your SDRs spend their
+              time closing, not prospecting. Most clients with existing teams
+              see a 40–60% increase in team productivity.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              Is there a long-term contract?
+              <span class="faq-arrow">+</span>
+            </div>
+            <div class="faq-a">
+              No contracts. We operate on a month-to-month basis. We earn your
+              business every single month by delivering results. The average
+              client stays with us for 8.4 months — not because they're locked
+              in, but because the system keeps working.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              What does the guarantee actually cover?
+              <span class="faq-arrow">+</span>
+            </div>
+            <div class="faq-a">
+              If we don't hit your plan's guaranteed number of booked calls in
+              your first 30 days, you receive a full refund — no questions
+              asked. "Booked calls" means qualified prospects who show up to
+              scheduled calls with you, not just calendar holds.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              How many clients do you take on?
+              <span class="faq-arrow">+</span>
+            </div>
+            <div class="faq-a">
+              We limit new onboardings to 5 clients per month. This isn't
+              manufactured scarcity — it's how we protect the quality of results
+              for every client. Each new client gets a dedicated team and
+              personalized strategy, which requires real bandwidth.
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</footer>
+    </section>
 
-<script>
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 80);
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    <!-- FINAL CTA -->
+    <section class="final-cta" id="cta">
+      <div class="container-sm">
+        <div class="scarcity">⚠ Only 2 onboarding spots left this month</div>
+        <h2>Stop Chasing Clients.<br />Start <em>Choosing</em> Them.</h2>
+        <p>
+          Your next 10–20 qualified sales calls are 30 days away. Book a free
+          15-minute strategy call — we'll map out your exact system and tell you
+          honestly if it's a fit.
+        </p>
+        <div class="final-cta-actions">
+          <a
+            href="https://calendly.com/leodigitalz-dm/30min"
+            class="btn-primary"
+            style="font-size: 16px; padding: 18px 40px"
+            >Book My Free Strategy Call →</a
+          >
+          <div class="cta-sub">
+            <span>⏱ 15 minutes</span>
+            <span>🔒 No pressure</span>
+            <span>✓ No contracts</span>
+            <span>⚡ Results guaranteed</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-// FAQ toggle
-function toggleFaq(el) {
-  const item = el.closest('.faq-item');
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
-}
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-logo">Revenue<span>Engine</span>™</div>
+          <div class="footer-copy">
+            © 2025 RevenueEngine. All rights reserved.
+          </div>
+          <div class="footer-links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
 
-// Animated counters
-function animateCounter(el, target, suffix, decimals) {
-  let start = 0;
-  const duration = 1800;
-  const step = timestamp => {
-    if (!start) start = timestamp;
-    const progress = Math.min((timestamp - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const val = eased * target;
-    el.textContent = decimals ? val.toFixed(1) + suffix : Math.floor(val) + suffix;
-    if (progress < 1) requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-}
+    <script>
+      // Scroll reveal
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+              setTimeout(() => e.target.classList.add("visible"), i * 80);
+              observer.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08 },
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
 
-const statObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      const nums = e.target.querySelectorAll('.num');
-      nums.forEach(n => {
-        const txt = n.textContent;
-        const match = txt.match(/([\d.]+)(.*)/);
-        if (match) {
-          const val = parseFloat(match[1]);
-          const suf = match[2];
-          const dec = match[1].includes('.') ? 1 : 0;
-          animateCounter(n, val, suf, dec);
-        }
+      // FAQ toggle
+      function toggleFaq(el) {
+        const item = el.closest(".faq-item");
+        const isOpen = item.classList.contains("open");
+        document
+          .querySelectorAll(".faq-item")
+          .forEach((i) => i.classList.remove("open"));
+        if (!isOpen) item.classList.add("open");
+      }
+
+      // Animated counters
+      function animateCounter(el, target, suffix, decimals) {
+        let start = 0;
+        const duration = 1800;
+        const step = (timestamp) => {
+          if (!start) start = timestamp;
+          const progress = Math.min((timestamp - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const val = eased * target;
+          el.textContent = decimals
+            ? val.toFixed(1) + suffix
+            : Math.floor(val) + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }
+
+      const statObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              const nums = e.target.querySelectorAll(".num");
+              nums.forEach((n) => {
+                const txt = n.textContent;
+                const match = txt.match(/([\d.]+)(.*)/);
+                if (match) {
+                  const val = parseFloat(match[1]);
+                  const suf = match[2];
+                  const dec = match[1].includes(".") ? 1 : 0;
+                  animateCounter(n, val, suf, dec);
+                }
+              });
+              statObserver.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
+      document
+        .querySelectorAll(".results-numbers,.hero-stats")
+        .forEach((el) => statObserver.observe(el));
+
+      // Smooth nav link behavior
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const target = document.querySelector(a.getAttribute("href"));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
       });
-      statObserver.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.3 });
-document.querySelectorAll('.results-numbers,.hero-stats').forEach(el => statObserver.observe(el));
-
-// Smooth nav link behavior
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-</script>
-</body>
+    </script>
+  </body>
 </html>
